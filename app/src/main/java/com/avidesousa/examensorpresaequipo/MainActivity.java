@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -14,6 +16,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.ListView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import org.w3c.dom.Text;
 
@@ -49,6 +52,26 @@ public class MainActivity extends AppCompatActivity {
                 miAdaptador.notifyDataSetChanged();
             }
         });
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        //momento en el que se crea el menu de options
+        getMenuInflater().inflate(R.menu.mi_menu,menu);
+        return true;//mostar los tres untos de menu
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(@NonNull MenuItem item) {
+        if(item.getItemId()==R.id.mSetting){
+            Toast.makeText(this,"SE HA SELECCIONADO SETTING",Toast.LENGTH_LONG).show();
+
+        }else if(item.getItemId()==R.id.mPersonaje){
+            Toast.makeText(this,"SE HA SELECCIONADO PERSONAJE",Toast.LENGTH_LONG).show();
+        }else{
+            Toast.makeText(this,"SE HA SELECCIONADO OTRO MENU",Toast.LENGTH_LONG).show();
+        }
+        return super.onOptionsItemSelected(item);
     }
 
     public class MiAdaptadorEquipos extends ArrayAdapter<Equipos>{
